@@ -1,0 +1,1 @@
+export const ProductsManager = () => <div>ProductsManager</div>;

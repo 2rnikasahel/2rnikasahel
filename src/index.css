@@ -1,0 +1,565 @@
+@import "tailwindcss";
+
+@theme {
+  --font-vazir: 'Vazirmatn', sans-serif;
+  --color-primary: #0f172a;
+  --color-primary-light: #1e293b;
+  --color-secondary: #f59e0b;
+  --color-accent: #3b82f6;
+  --color-accent-dark: #1d4ed8;
+  --color-dark-bg: #0b1120;
+  --color-light-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+}
+
+* {
+  font-family: 'Vazirmatn', sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 28rem),
+    #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+html.dark {
+  --color-light-bg: #07111f;
+  --color-card-bg: #0f172a;
+  --color-border: #23324a;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+}
+
+html.dark body {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(59, 130, 246, 0.18), transparent 24rem),
+    radial-gradient(circle at 90% 12%, rgba(14, 165, 233, 0.12), transparent 22rem),
+    linear-gradient(180deg, #020617 0%, #07111f 42%, #020617 100%);
+  color: #e2e8f0;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+html.dark ::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #ffffff;
+}
+
+/* Polished dark mode adaptation for existing utility-heavy components. */
+html.dark .bg-light-bg,
+html.dark .bg-gray-50,
+html.dark .bg-gray-100,
+html.dark .bg-slate-50,
+html.dark .bg-slate-100 {
+  background-color: #07111f !important;
+}
+
+html.dark .bg-white,
+html.dark .bg-card-bg {
+  background-color: rgba(15, 23, 42, 0.94) !important;
+}
+
+html.dark .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .text-primary,
+html.dark .text-text-primary {
+  color: #f8fafc !important;
+}
+
+html.dark .text-text-secondary,
+html.dark .text-slate-600,
+html.dark .text-gray-400,
+html.dark .text-gray-500,
+html.dark .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+html.dark .border-border,
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-slate-200 {
+  border-color: #23324a !important;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: rgba(2, 6, 23, 0.82) !important;
+  color: #e2e8f0 !important;
+  border-color: #23324a !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark .shadow-sm,
+html.dark .shadow-lg,
+html.dark .shadow-xl,
+html.dark .shadow-2xl {
+  box-shadow: 0 24px 70px -34px rgba(15, 23, 42, 0.95), 0 0 0 1px rgba(59, 130, 246, 0.05) !important;
+}
+
+html.dark .hover\:bg-light-bg:hover {
+  background-color: #1e293b !important;
+}
+
+html.dark .category-card:hover,
+html.dark .product-card:hover {
+  box-shadow: 0 24px 60px -24px rgba(59, 130, 246, 0.42) !important;
+}
+
+html.dark .bg-blue-50,
+html.dark .bg-green-50,
+html.dark .bg-red-50,
+html.dark .bg-yellow-50,
+html.dark .bg-accent\/5 {
+  background-color: rgba(30, 41, 59, 0.75) !important;
+}
+
+html.dark .bg-gradient-to-br.from-slate-50.to-slate-100,
+html.dark .bg-gradient-to-br.from-gray-50.to-gray-100 {
+  background-image: linear-gradient(135deg, #0f172a, #111c31) !important;
+}
+
+/* Bottom cart bar horizontal scroll */
+.cart-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.cart-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.cart-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cart-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.cart-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+html.dark .cart-scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.category-horizontal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: scroll-position;
+}
+
+/* Brands carousel - styles handled inline via React */
+
+/* Offers scroll - بدون snap برای حرکت روون‌تر */
+.offers-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  will-change: scroll-position;
+}
+.offers-scroll::-webkit-scrollbar { height: 6px; }
+.offers-scroll::-webkit-scrollbar-track { background: transparent; }
+.offers-scroll::-webkit-scrollbar-thumb { background: transparent; border-radius: 999px; }
+.offers-scroll:hover::-webkit-scrollbar-thumb,
+.offers-scroll:active::-webkit-scrollbar-thumb { background: #cbd5e1; }
+html.dark .offers-scroll:hover::-webkit-scrollbar-thumb,
+html.dark .offers-scroll:active::-webkit-scrollbar-thumb { background: #334155; }
+.category-horizontal-scroll::-webkit-scrollbar {
+  height: 7px;
+}
+.category-horizontal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.category-horizontal-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+.category-horizontal-scroll:hover,
+.category-horizontal-scroll.is-dragging {
+  scrollbar-color: #cbd5e1 transparent;
+}
+.category-horizontal-scroll:hover::-webkit-scrollbar-thumb,
+.category-horizontal-scroll.is-dragging::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.category-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+html.dark .category-horizontal-scroll:hover::-webkit-scrollbar-thumb,
+html.dark .category-horizontal-scroll.is-dragging::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Slider animations */
+.slide-enter {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Product card hover */
+.product-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input {
+  transition: all 0.2s ease;
+}
+
+/* Top bar marquee */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Hero slider overlay */
+.hero-overlay {
+  background: linear-gradient(to left, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.4) 50%, transparent 100%);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Badge pulse */
+.badge-pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Admin panel styles */
+.admin-sidebar {
+  transition: all 0.3s ease;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* Category card hover */
+.category-card {
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  border-color: #3b82f6;
+}
+
+/* Home page categories section cards should not clip on hover */
+.home-category-card:hover {
+  transform: none !important;
+  border-color: #3b82f6;
+  box-shadow: 0 20px 40px -18px rgba(59, 130, 246, 0.22);
+}
+
+/* Chatbot animation */
+.chatbot-bounce {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Cart notification badge */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Modern Grid Pagination Animation - No White Flash */
+@keyframes fadeInScale {
+  from { 
+    opacity: 0.6; 
+    transform: scale(0.96) translateY(12px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.no-drag {
+  -webkit-user-drag: none;
+  user-drag: none;
+  user-select: none;
+}
+
+/* 🏗️ Desktop-First Universal Scaling System */
+:root {
+  /* عرض مبنای طراحی دسکتاپ */
+  --base-width: 1280;
+  /* ضریب مقیاس بر اساس عرض پنجره */
+  --scale-factor: clamp(0.4, calc(infinity), 1.2);
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --scale-factor: calc(100vw / 1280);
+  }
+}
+
+/* اعمال فونت سیال سراسری برای حفظ چیدمان */
+html {
+  font-size: calc(16px * var(--scale-factor));
+  /* جلوگیری از Stacking خودکار گریدها */
+}
+
+.main-container {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  /* در موبایل عرض کانتینر را ثابت نگه می‌داریم تا اسکیل شود */
+}
+
+/* تبدیل تمام گریدهای ریسپانسیو به گریدهای ثابت دسکتاپی */
+.force-desktop-grid {
+  display: grid !important;
+  grid-auto-flow: column !important;
+}
+
+.section-spacing {
+  margin-bottom: 4rem;
+}
+
+/* تنظیمات سراسری برای المان‌های درگیبل */
+.no-drag {
+  -webkit-user-drag: none;
+  user-drag: none;
+  user-select: none;
+}
+
+/* اسکرول‌بار بسیار ظریف برای حفظ حس مینیاتوری */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* بهبود خوانایی متون در مقیاس کوچک */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Utility to prevent standard mobile stacking */
+.no-stack {
+  flex-direction: row !important;
+  display: flex !important;
+}
+
+.grid-no-stack {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)) !important;
+}
+
+.grid-responsive {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+/* Fix for long product titles to keep card heights consistent */
+.product-title-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 3rem; /* 2 lines * line-height */
+  line-height: 1.5rem;
+}
+
+/* Ensure images maintain aspect ratio during load */
+.aspect-square-stable {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-light-bg);
+}
+
+.aspect-video-stable {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-light-bg);
+}
+
+/* Custom Scrollbar Polish */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* RTL Helpers */
+.margin-inline-start {
+  margin-inline-start: 1rem;
+}
+.padding-inline-end {
+  padding-inline-end: 1rem;
+}
